@@ -19,13 +19,17 @@ export default function Page() {
     const [index, setIndex] = useState(0)
     const [scoreNumber, setScoreNumber] = useState(0)
     const [highScoreNumber, setHighScoreNumber] = useState(() => {
-        const storedScore = localStorage.getItem('highScoreNumber');
-        return parseInt(storedScore) ? parseInt(storedScore) : 0;
+        if (typeof localStorage !== 'undefined') {
+            const storedScore = localStorage.getItem('highScoreNumber');
+            return parseInt(storedScore) ? parseInt(storedScore) : 0;
+        }
     })
 
     useEffect(() => {
         if (scoreNumber > highScoreNumber) {
-            localStorage.setItem('highScoreNumber', scoreNumber.toString());
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem('highScoreNumber', scoreNumber.toString());
+            }
         }
     
     }, [scoreNumber, highScoreNumber]);
