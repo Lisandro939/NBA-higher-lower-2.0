@@ -1,2 +1,4 @@
+Beta version 1.0.0 
 
-- [ ] Falta adaptar a Desktop
+39 jugadores disponibles
+
